@@ -23,6 +23,13 @@ export class AppComponent {
     this.deviceWattage = 500;
     this.recalculateCosts();
   }
+  nullifyAndRecalculate() {
+
+    this.dailyCostsInEuros = 0;
+    this.yearlyCostInEuros = 0;
+    this.monthlyCostInEuros = 0;
+    this.recalculateCosts();
+  }
 
 
   recalculateCosts() {

@@ -5,18 +5,21 @@
             <div class="col-4 pt-1">
             </div>
             <div class="col-4 text-center">
-              <h2>Vebruikskosten</h2>
+              <nav class="navbar fixed-top navbar-light bg-light">
+               <h2 class="navbar-brand">Vebruikskosten:</h2>
+               Jaarlijks:   <b>{{  yearlyCostInEuros | currency:'EUR':true }}</b> Maandelijks: <b>{{ monthlyCostInEuros | currency:'EUR':true }}</b> Dagelijks:   <b>{{  dailyCostsInEuros | currency:'EUR':true }}</b>             
+              </nav>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
             </div>
           </div>
         </header>
       </div>
+      <br />
     <div class="row">
       <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Jaarlijks:   {{  yearlyCostInEuros | currency:'EUR':true }}</h4>
-          <h4 class="mb-3">Maandelijks: {{ monthlyCostInEuros | currency:'EUR':true }}</h4>
-          <h4 class="mb-3">Dagelijks:   {{  dailyCostsInEuros | currency:'EUR':true }}</h4>
+        <div class="card" style="width: auto;">
+            <div class="card-body">
         <form class="needs-validation" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -58,9 +61,11 @@
               </div>
           </div>
           <div class="mb-3">
-              <button type="button" class="btn btn-warning btn-lg btn-block">Bereken kosten</button>
+              <button type="button" class="btn btn-warning btn-lg btn-block" (click)="nullifyAndRecalculate()">Bereken kosten</button>
           </div>
         </form>
+        </div>
+        </div>
       </div>
 
        <!-- <div class="col-md-4 order-md-2 mb-4">
