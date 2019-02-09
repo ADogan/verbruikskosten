@@ -45,3 +45,4 @@ Thumbs.db
 
 # Firebase files and folders
 storage.rules
+.firebase/*
