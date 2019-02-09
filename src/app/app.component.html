@@ -7,9 +7,9 @@
     <div class="row">
 
       <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Jaarlijks: {{yearlyCostInEuros | currency}}</h4>
-          <h4 class="mb-3">Maandelijks: {{monthlyCostInEuros | currency}}</h4>
-          <h4 class="mb-3">Dagelijks: {{dailyCostsInEuros | currency}}</h4>
+          <h4 class="mb-3">Jaarlijks: {{yearlyCostInEuros | currency:'EUR':true }}</h4>
+          <h4 class="mb-3">Maandelijks: {{monthlyCostInEuros | currency:'EUR':true }}</h4>
+          <h4 class="mb-3">Dagelijks: {{dailyCostsInEuros | currency:'EUR':true }}</h4>
         <form class="needs-validation" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -41,9 +41,9 @@
           <div class="mb-3">                
               <label for="pricekwh">Electriciteitskosten</label>
               <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Eurocent per kWh</span>
-                </div>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Eurocent per kWh</span>
+                  </div>
                 <input type="number" class="form-control" min="0" id="pricekwh" name="pricekwh" [(ngModel)]="electricityCostOfKWhInCents" required (blur)="recalculateCosts()">
               </div>
               <div class="invalid-feedback">
