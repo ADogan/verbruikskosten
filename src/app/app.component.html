@@ -2,10 +2,57 @@
     <div class="py-5 text-center">
       <!-- <img class="d-block mx-auto mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
       <h2>Vebruikskosten</h2>
-      <p class="lead">De werkelijke kosten kunnen verschillen. Dit is een schatting! <br />(The calculation is an estimate!)</p>
-    </div>
+  </div>
   
     <div class="row">
+
+      <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Jaarlijks: {{yearlyCostInEuros | currency}}</h4>
+          <h4 class="mb-3">Maandelijks: {{monthlyCostInEuros | currency}}</h4>
+          <h4 class="mb-3">Dagelijks: {{dailyCostsInEuros | currency}}</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="usage">Gebruik per dag</label>
+              <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Uren:</span>
+              </div>
+                <input type="number" class="form-control" min="0" max="24" id="usage" name="usage" [(ngModel)]="hoursOfUsageADay" required (blur)="recalculateCosts()">
+              </div>
+              <div class="invalid-feedback">
+                usage is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="device_wattage">Apparaatverbruik</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Watt</span>
+                  </div>
+                  <input type="number" class="form-control" min="0" id="device_wattage" name="device_wattage" [(ngModel)]="deviceWattage" required (blur)="recalculateCosts()">
+                  <div class="invalid-feedback" style="width: 100%;">
+                    Device wattage is vereist.
+                  </div>
+                </div>
+            </div>
+          </div>
+  
+          <div class="mb-3">                
+              <label for="pricekwh">Electriciteitskosten</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Eurocent per kWh</span>
+                </div>
+                <input type="number" class="form-control" min="0" id="pricekwh" name="pricekwh" [(ngModel)]="electricityCostOfKWhInCents" required (blur)="recalculateCosts()">
+              </div>
+              <div class="invalid-feedback">
+                Electricity price is required.
+              </div>
+          </div>
+        </form>
+      </div>
+
        <!-- <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">Devices list</span>
@@ -46,45 +93,12 @@
           </li>
         </ul>
       </div> -->
-
-      <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Jaarlijkse kosten: {{yearlyCost}}</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="usage">Hours of usage per day</label>
-              <input type="Number" class="form-control" id="usage" placeholder="1" value="" required>
-              <div class="invalid-feedback">
-                usage is required.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="pricekwh">cent per kWh</label>
-              <input type="number" class="form-control" id="price" placeholder="0,21" value="" required>
-              <div class="invalid-feedback">
-                Electricity price is required.
-              </div>
-            </div>
-          </div>
-  
-          <div class="mb-3">
-            <label for="Wattage">Wattage</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Watt</span>
-              </div>
-              <input type="number" class="form-control" id="device_wattage" placeholder="100 Watt" required>
-              <div class="invalid-feedback" style="width: 100%;">
-                Device wattage is required.
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
     </div>
     
 <router-outlet></router-outlet>
 <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="">Dit is een inschatting! <br />De werkelijke kosten kunnen verschillen.<br />(The calculation is an estimate!)</p>
+    
     <p class="mb-1">&copy; 2018 Verbruikskosten</p>
     <!-- <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
