@@ -18,9 +18,9 @@ export class AppComponent {
   yearlyCostInEuros;
 
   constructor() {
-    this.hoursOfUsageADay = 4;
+    this.hoursOfUsageADay = 0;
     this.electricityCostOfKWhInCents = 21;
-    this.deviceWattage = 500;
+    this.deviceWattage = 100;
     this.recalculateCosts();
   }
   nullifyAndRecalculate() {
@@ -42,7 +42,7 @@ export class AppComponent {
 
   cleanupWrongInput() {
     this.parseInput(this.hoursOfUsageADay);
-    if ( this.hoursOfUsageADay <= 0) {
+    if ( this.hoursOfUsageADay < 0) {
       this.hoursOfUsageADay = 1;
     }
 
