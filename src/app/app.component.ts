@@ -23,8 +23,8 @@ export class AppComponent {
     this.deviceWattage = 100;
     this.recalculateCosts();
   }
-  nullifyAndRecalculate() {
 
+  nullifyAndRecalculate() {
     this.dailyCostsInEuros = 0;
     this.yearlyCostInEuros = 0;
     this.monthlyCostInEuros = 0;
@@ -62,7 +62,6 @@ export class AppComponent {
 
 
   parseInput(input) {
-
     const numbers = new RegExp(/^[0-9]+$/);
     if ( !numbers.test(input ) ) {
       // parse input to a number;

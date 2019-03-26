@@ -6,16 +6,21 @@
             </div>
             <div class="col-4 text-center">
               <nav class="navbar fixed-top navbar-light bg-light">
-               <!-- <h2 class="navbar-brand">Vebruikskosten:</h2> -->
-               <p>Bereken wat de electriciteitskosten van een apparaat kan zijn:</p>
+               <h2 class="navbar-brand">Vebruikskosten:</h2>
                           
-              <p> Jaarlijks:   <b>{{  yearlyCostInEuros | currency:'EUR':true }}</b> 
-                  Maandelijks: <b>{{ monthlyCostInEuros | currency:'EUR':true }}</b> 
-                  Dagelijks:   <b>{{  dailyCostsInEuros | currency:'EUR':true }}</b>  
+              <p> Jaarlijks:   <span class="badge" [ngClass]="{true: 'badge-danger', false: 'badge-warning'}[yearlyCostInEuros > 30]">
+                                  <b>{{  yearlyCostInEuros | currency:'EUR':true }}</b>
+                                </span>
+
+                  Maandelijks: <span class="badge badge-warning">
+                                  <b>{{ monthlyCostInEuros | currency:'EUR':true }}</b>
+                                </span>
+
+                  Dagelijks:   <span class="badge badge-warning">
+                                  <b>{{  dailyCostsInEuros | currency:'EUR':true }}</b>
+                                </span>
               </p>
               </nav>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
             </div>
           </div>
         </header>
@@ -26,7 +31,7 @@
       <div class="col-md-12 order-md-1">
         <div class="card" style="width: auto;">
             <div class="card-body">
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate [ngFormOptions]="{updateOn: 'change'}">
           <div class="row">
 
             <div class="col-md-6 col-sm-6 mb-3">
@@ -43,7 +48,7 @@
                         name="usage" 
                         [(ngModel)]="hoursOfUsageADay" 
                         required 
-                        (blur)="recalculateCosts()" />
+                        (blur)="recalculateCosts()" ngModel/>
               </div>
               <div class="invalid-feedback">
                 usage is required.
@@ -69,8 +74,6 @@
                   </div>
                 </div>
             </div>
-            
-          <!-- </div> -->
   
           <div class="w-100"></div>
           
@@ -102,51 +105,11 @@
         </div>
       </div>
 
-       <!-- <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Devices list</span>
-          <span class="badge badge-secondary badge-pill">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">-$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-      </div> -->
     </div>
     
 <router-outlet></router-outlet>
 <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="">Dit is een inschatting! <br />De werkelijke kosten kunnen verschillen.</p>
+    <p class="">Dit is een indicatie.<br />De werkelijke kosten kunnen verschillen.</p>
       <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87694509-5"></script>
 <script>
@@ -168,11 +131,6 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-    <p class="mb-1">&copy; 2018 Verbruikskosten</p>
-    <!-- <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul> -->
+    <p class="mb-1">&copy; 2019 Verbruikskosten</p>
   </footer>
 </div>

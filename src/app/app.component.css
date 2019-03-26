@@ -4,4 +4,7 @@
   
   .lh-condensed { line-height: 0.25; }
   
-  
+  .row {
+    clear:both;
+    padding:5px;
+  }
