@@ -48,7 +48,7 @@
                         name="usage" 
                         [(ngModel)]="hoursOfUsageADay" 
                         required 
-                        (change)="recalculateCosts()"/>
+                        (ngModelChange)="recalculateCosts()"/>
               </div>
               <div class="invalid-feedback">
                 usage is required.
@@ -62,13 +62,13 @@
                     <span class="input-group-text">Watt</span>
                   </div>
                   <input type="number" 
-                        class="form-control" 
+                        class="form-control"
                         min="0" 
                         id="device_wattage" 
                         name="device_wattage" 
                         [(ngModel)]="deviceWattage" 
                         required 
-                        (change)="recalculateCosts()" />
+                        (ngModelChange)="recalculateCosts()" />
                   <div class="invalid-feedback" style="width: 100%;">
                     Device wattage is vereist.
                   </div>
@@ -90,7 +90,7 @@
                         name="pricekwh" 
                         [(ngModel)]="electricityCostOfKWhInCents" 
                         required 
-                        (change)="recalculateCosts()" />
+                        (ngModelChange)="recalculateCosts()" />
               </div>
               <div class="invalid-feedback">
                 Electricity price is required.
